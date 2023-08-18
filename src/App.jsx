@@ -1,10 +1,16 @@
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Dashboard, {dashboardLoader} from "./pages/Dashboard.jsx";
+
 
 // layouts
 import Main, {mainLoader} from "./layouts/Main.jsx";
 
+// routes
 import Error from "./pages/Error.jsx";
+import Dashboard, {dashboardLoader} from "./pages/Dashboard.jsx";
+
+// actions
+import {logoutAction} from "./actions/logout.js";
+import {loginAction} from "./actions/login.js";
 
 const router = createBrowserRouter([
     {
@@ -20,15 +26,15 @@ const router = createBrowserRouter([
                 errorElement: <Error />
             },
             {
-                path:'/about',
-                element: <h1>About</h1>
+                path: "logout",
+                action: logoutAction
+            },
+            {
+                path: "login",
+                action: loginAction
             }
         ]
     },
-    {
-        path: '*',
-        element: <Error />
-    }
 ])
 function App() {
   return (
